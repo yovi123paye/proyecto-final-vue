@@ -25,10 +25,10 @@
     {
       "id": 2,
       "imagen": "https://ae01.alicdn.com/kf/Sc3cc58f2a441419f970cc01f9e5358fbw/Dron-LU3-MAX-GPS-8K-HD-profesional-con-c-mara-Dual-card-n-autoestabilizador-Motor-sin.jpg_Q90.jpg_.webp",
-      "nombre": "Cemento Vichaya",
-      "descripcion": "ABC ....",
-      "precio": "40",
-      "catalogoId": 1
+      "nombre": "Fierro de Tres pulgadas",
+      "descripcion": "Fierro 3/8",
+      "precio": "1000",
+      "catalogoId": null
     },
     {
       "nombre": "Cemento YUCRA",
@@ -36,6 +36,27 @@
       "precio": "30",
       "catalogoId": 1,
       "id": 3
+    },
+    {
+      "id": 4,
+      "nombre": "Fierro de 4/9",
+      "descripcion": "1111",
+      "precio": "11111",
+      "catalogoId": 2
+    },
+    {
+      "id": 5,
+      "nombre": "Fierro 5",
+      "descripcion": "555",
+      "precio": "555",
+      "catalogoId": 2
+    },
+    {
+      "id": 6,
+      "nombre": "aaaaaaaa",
+      "descripcion": "aaaaaaaaaaa",
+      "precio": "aaaaaaaaa",
+      "catalogoId": 1
     }
   ]
 }

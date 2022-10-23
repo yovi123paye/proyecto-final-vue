@@ -1,8 +1,22 @@
 <template>
     <div class="container">
         <h1>Productos</h1>
-        <h4>{{mensaje}}</h4>
+        <!-- <div class="input-group mb-1">
+            <button class="btn btn-outline-primary" @click="nuevoProducto()">Nuevo</button>
+        </div> -->
+        <br />
         <form @submit.prevent="agregarProducto()">
+
+            <div class="input-group mb-2">
+                Seleccionar Catalogo:</div>
+                <div class="input-group mb-2">
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg" v-model="producto.catalogoId">                    
+                    
+                    <option v-for="item in catalogo" v-bind:key="item.id" v-bind:value="item.id">{{ item.nombre }}</option>
+
+                </select>
+            </div>
+
             <div class="input-group mb-2">
                 <input type="text" class="form-control" v-model="producto.nombre" placeholder="Nuevo Producto"
                     aria-describedby="button-addon2">
@@ -25,31 +39,9 @@
         </form>
 
         <h2>Listado de Productos</h2>
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item" v-for="(value, index) in productos">
-                <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        :data-bs-target="`#collapseTwo${index}`" aria-expanded="false"
-                        :aria-controls="`collapseTwo${index}`">
-                        {{value.nombre}}
-                    </button>
-                </h2>
-                <div :id="`collapseTwo${index}`" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        {{value.descripcion}}
+        <br />
 
-                        <!-- <app-acciones @onAccion="irA($event, value.id)"></app-acciones> -->
 
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="">
-
-        </div>
         <table class="table">
             <thead class="thead-light">
                 <tr>
@@ -130,26 +122,46 @@ export default {
                 nombre: null,
                 descripcion: null,
                 precio: null,
-                catalogoId: 1,
+                catalogoId: null,
             },
             productos: [],
-            mensaje: "hola Roberto",
+            catalogo: [],            
         }
     },
     methods: {
         agregarProducto() {
-            axios({
-                method: "post",
-                // url: process.env.VUE_APP_RUTA_API+"/tareas",
-                url: "http://localhost:3000/productos",
-                data: this.producto
-            })
-                .then(response => {
-                    console.log(response);
-                    //this.tarea.titulo = null;
-                    this.getProductos();
+            if (this.producto.id == null) {
+                axios({
+                    method: "post",
+                    // url: process.env.VUE_APP_RUTA_API+"/tareas",
+                    url: "http://localhost:3000/productos",
+                    data: this.producto
                 })
-                .catch(e => console.log(e));
+                    .then(response => {
+                        console.log(response);
+                        //this.tarea.titulo = null;
+                        this.getProductos();
+                        this.nuevoProducto();
+                    })
+                    .catch(e => console.log(e));
+
+            } else {
+                axios({
+                    method: "patch",
+                    url: "http://localhost:3000/productos/" + this.producto.id,
+                    data: this.producto
+                })
+                    .then(response => {
+                        console.log(response);
+                        //this.tarea.titulo = null;
+                        this.getProductos();
+                        this.nuevoProducto();
+                    })
+                    .catch(e => console.log(e));
+            }
+
+
+
         },
         getProductos() {
             axios({
@@ -170,9 +182,9 @@ export default {
                 url: "http://localhost:3000/productos/" + id
             })
                 .then(response => {
-                    console.log(response);
-                    //this.tarea.titulo = null;
+                    console.log(response);                    
                     this.getProductos();
+                    this.nuevoProducto();
                 })
                 .catch(e => console.log(e));
         },
@@ -185,16 +197,40 @@ export default {
                 .then(response => {
                     console.log(response);
                     //this.tarea.titulo = null;
-                    this.producto = response.data;;
+                    this.producto = response.data;
                 })
                 .catch(e => console.log(e));
-        }
+        },
+        nuevoProducto() {
+            this.producto = {
+                id: null,
+                nombre: null,
+                descripcion: null,
+                precio: null,
+                catalogoId: null,
+            };
+            
+
+        },
+        getCatalogo() {
+            axios({
+                method: "get",
+                // url: process.env.VUE_APP_RUTA_API+"/tareas/?q="+this.textoABuscar
+                url: "http://localhost:3000/catalogo",
+            })
+                .then(response => {
+                    this.catalogo = response.data;
+                    console.log(response);
+                })
+                .catch(e => console.log(e));
+        },
 
     },
     computed: {
 
     },
     mounted() {
+        this.getCatalogo();
         this.getProductos();
     },
     components: {
