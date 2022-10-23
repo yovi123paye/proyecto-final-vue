@@ -1,8 +1,7 @@
 <template>
     <div class="container">
         <h1>Listado de Productos segun su catalogo </h1>
-        <div class="input-group mb-2">
-            Filtro 1 - Seleccionar Catalogo:</div>
+        <h1 class="input-group mb-2">Filtro 1 - Seleccionar Catalogo:</h1>
         <div class="input-group mb-2">
             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg" v-model="itemCatalogo.id"
                 @change="getProductos(itemCatalogo.id)">
@@ -36,7 +35,7 @@
 
         <br /><br />
         
-            <h1>Filtro 2 - Productos mayores a 100
+            <h1>Filtro 2 - Productos mayor o igual  a 50 Bs.
             </h1>
         
 
@@ -125,7 +124,7 @@ export default {
         filtrarPorPrecio() {
 
             return this.productosTodo.filter(item => {
-                return item.precio > 100
+                return item.precio >= 50
             });
 
 

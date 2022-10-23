@@ -2,33 +2,33 @@
   "catalogo": [
     {
       "id": 1,
-      "nombre": "cemento"
+      "nombre": "Cemento"
     },
     {
       "id": 2,
-      "nombre": "fierro"
+      "nombre": "Fierro"
     },
     {
       "id": 3,
-      "nombre": "estuco"
+      "nombre": "Estuco"
     }
   ],
   "productos": [
     {
       "id": 1,
       "imagen": "https://ae01.alicdn.com/kf/Sc3cc58f2a441419f970cc01f9e5358fbw/Dron-LU3-MAX-GPS-8K-HD-profesional-con-c-mara-Dual-card-n-autoestabilizador-Motor-sin.jpg_Q90.jpg_.webp",
-      "nombre": "Cemento Viacha IPV 40",
-      "descripcion": "ABC ....",
+      "nombre": "Cemento Viacha IP 40",
+      "descripcion": "Bolsa de Cemento , Norma técnica: NB-011 Tipo de cemento: IP-40 Presentación: bolsas de 50 Kg",
       "precio": "50",
       "catalogoId": 1
     },
     {
       "id": 2,
       "imagen": "https://ae01.alicdn.com/kf/Sc3cc58f2a441419f970cc01f9e5358fbw/Dron-LU3-MAX-GPS-8K-HD-profesional-con-c-mara-Dual-card-n-autoestabilizador-Motor-sin.jpg_Q90.jpg_.webp",
-      "nombre": "Fierro de Tres pulgadas",
-      "descripcion": "Fierro 3/8",
-      "precio": "1000",
-      "catalogoId": 1
+      "nombre": "Fierro Corrugado",
+      "descripcion": "Aceros Arequipa, una barra 3/8",
+      "precio": "17",
+      "catalogoId": 2
     },
     {
       "nombre": "Cemento YUCRA",
@@ -39,17 +39,38 @@
     },
     {
       "id": 4,
-      "nombre": "Fierro de 4/9",
-      "descripcion": "1111",
-      "precio": "99",
+      "nombre": "Fierro de Construccion 5/8",
+      "descripcion": "Docena de Barra de Fierro corrugado",
+      "precio": "200",
       "catalogoId": 2
     },
     {
       "id": 5,
-      "nombre": "Fierro 5",
-      "descripcion": "555",
-      "precio": "555",
+      "nombre": "Fierro de construccion 1/4",
+      "descripcion": "Aceros Arequipa, 1 Docena de barra 1/4",
+      "precio": "150",
       "catalogoId": 2
+    },
+    {
+      "id": 6,
+      "nombre": "Estuco Vichaya ",
+      "descripcion": "1 Fanega  de Estuco Especial, 25 Kg",
+      "precio": "60",
+      "catalogoId": 3
+    },
+    {
+      "id": 7,
+      "nombre": "Estuco Los Andes",
+      "descripcion": "1 fanega Calidad Mejorada",
+      "precio": "70",
+      "catalogoId": 3
+    },
+    {
+      "id": 8,
+      "nombre": "Cemento Viacha IP- 30",
+      "descripcion": "CEMENTO TIPO IP – 30 Norma técnica: NB-011 Tipo de cemento: IP-30 Presentación: bolsas de 50 Kg.",
+      "precio": "45",
+      "catalogoId": 1
     }
   ]
 }

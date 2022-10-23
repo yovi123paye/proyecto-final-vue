@@ -1,27 +1,31 @@
 <template>
-    <div>
-        <h1>Registro de Catalogo
-        </h1>
-    </div>
-    <br />
 
-    <div>
-    <form @submit.prevent="agregarCatalogo()">
-
-        <div class="input-group mb-2">
-            <input type="text" class="form-control" v-model="itemCatalogo.nombre" placeholder="Nombre de Catalogo"
-                aria-describedby="button-addon2">
-        </div>
-        <div class="input-group mb-2">
-            <button class="btn btn-outline-secondary" type="submit">Agregar</button>
-        </div>
-    </form>
-</div>
-
-<br />
-<br />
-<br />
+    
     <div class="container">
+        <img alt="Vue logo" style="max-width: 200px;" class="img-fluid" src="../assets/material.jpg">
+        <div>
+            <h1>Registro de Catalogo
+            </h1>
+        </div>
+        <br />
+
+        <div>
+            <form @submit.prevent="agregarCatalogo()">
+
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" v-model="itemCatalogo.nombre"
+                        placeholder="Nombre de Catalogo" aria-describedby="button-addon2">
+                </div>
+                <div class="input-group mb-2">
+                    <button class="btn btn-outline-secondary" type="submit">Guardar</button>
+                </div>
+            </form>
+        </div>
+
+        <br />
+        <br />
+        <br />
+
 
         <h1> Listado de Catalogo</h1>
         <table class="table">
@@ -30,6 +34,7 @@
                     <th scope="col">No.</th>
                     <th scope="col">CATEGORIA</th>
                     <th scope="col">EDITAR</th>
+                    <th scope="col">ELIMINAR</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,7 +47,7 @@
                     </td>
                     <td>
                         <a href="#" class="nav-link" @click="eliminarCatalogo(value.id)"> <i
-                                class="fa-sharp fa-solid fa-trash"></i>Eliminar </a>  
+                                class="fa-sharp fa-solid fa-trash"></i>Eliminar </a>
                     </td>
                 </tr>
 
@@ -103,7 +108,7 @@ export default {
                 url: "http://localhost:3000/catalogo/" + id
             })
                 .then(response => {
-                    console.log(response);                    
+                    console.log(response);
                     this.getCatalogo();
                     this.nuevoCatalogo();
                 })
