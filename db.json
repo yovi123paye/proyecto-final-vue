@@ -2,15 +2,15 @@
   "catalogo": [
     {
       "id": 1,
-      "nombre": "cemento"
+      "categoria": "cemento"
     },
     {
       "id": 2,
-      "nombre": "fierro"
+      "categoria": "fierro"
     },
     {
       "id": 3,
-      "nombre": "estuco"
+      "categoria": "estuco"
     }
   ],
   "productos": [

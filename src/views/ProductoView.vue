@@ -18,6 +18,9 @@
             <div class="input-group mb-2">
                 <button class="btn btn-outline-secondary" type="submit">Agregar</button>
             </div>
+            <!-- <div class="input-group mb-2">
+                <button class="btn btn-outline-secondary" type="submit">Modificar</button>
+            </div> -->
 
         </form>
 
@@ -54,7 +57,8 @@
                     <th scope="col">PRODUCTO</th>
                     <th scope="col">DESCRIPCION</th>
                     <th scope="col">PRECIO</th>
-                    <th scope="col">ACCION</th>
+                    <th scope="col">EDITAR</th>
+                    <th scope="col">ELIMINAR</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,9 +67,17 @@
                     <td>{{value.nombre}}</td>
                     <td>{{value.descripcion}}</td>
                     <td>{{value.precio}}</td>
-                    <td></td>
+                    <td>
+                        <a href="#" class="nav-link" @click="verProducto(value.id)"> <i
+                                class="fa-sharp fa-solid fa-pen"></i> Editar</a>
+                    </td>
+                    <td>
+                        <a href="#" class="nav-link" @click="eliminarProducto(value.id)"> <i
+                                class="fa-sharp fa-solid fa-trash"></i>Eliminar </a>
+
+                    </td>
                 </tr>
-                
+
             </tbody>
         </table>
 
@@ -114,6 +126,7 @@ export default {
             "catalogoId": 1
             */
             producto: {
+                id: null,
                 nombre: null,
                 descripcion: null,
                 precio: null,
@@ -133,8 +146,8 @@ export default {
             })
                 .then(response => {
                     console.log(response);
-                    this.tarea.titulo = null;
-                    //this.getTareas();
+                    //this.tarea.titulo = null;
+                    this.getProductos();
                 })
                 .catch(e => console.log(e));
         },
@@ -147,6 +160,32 @@ export default {
                 .then(response => {
                     this.productos = response.data;
                     console.log(response);
+                })
+                .catch(e => console.log(e));
+        },
+        eliminarProducto(id) {
+            axios({
+                method: "delete",
+                // url: process.env.VUE_APP_RUTA_API+"/tareas",
+                url: "http://localhost:3000/productos/" + id
+            })
+                .then(response => {
+                    console.log(response);
+                    //this.tarea.titulo = null;
+                    this.getProductos();
+                })
+                .catch(e => console.log(e));
+        },
+        verProducto(id) {
+            axios({
+                method: "get",
+                // url: process.env.VUE_APP_RUTA_API+"/tareas",
+                url: "http://localhost:3000/productos/" + id
+            })
+                .then(response => {
+                    console.log(response);
+                    //this.tarea.titulo = null;
+                    this.producto = response.data;;
                 })
                 .catch(e => console.log(e));
         }
