@@ -50,13 +50,6 @@
       "descripcion": "555",
       "precio": "555",
       "catalogoId": 2
-    },
-    {
-      "id": 6,
-      "nombre": "aaaaaaaa",
-      "descripcion": "aaaaaaaaaaa",
-      "precio": "aaaaaaaaa",
-      "catalogoId": 1
     }
   ]
 }
