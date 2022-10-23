@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        Listado de Productos segun su catalogo
+        <h1>Listado de Productos segun su catalogo </h1>
         <div class="input-group mb-2">
             Filtro 1 - Seleccionar Catalogo:</div>
         <div class="input-group mb-2">
@@ -10,9 +10,7 @@
             </select>
         </div>
 
-        <div class="input-group mb-2">
-            Filtro 2 - Colocar el precio:</div>
-        <br />
+
         <h2>Listado de Productos</h2>
         <br />
         <table class="table">
@@ -21,9 +19,7 @@
                     <th scope="col">#</th>
                     <th scope="col">PRODUCTO</th>
                     <th scope="col">DESCRIPCION</th>
-                    <th scope="col">PRECIO</th>
-                    <th scope="col">EDITAR</th>
-                    <th scope="col">ELIMINAR</th>
+                    <th scope="col">PRECIO</th>                    
                 </tr>
             </thead>
             <tbody>
@@ -32,18 +28,41 @@
                     <td>{{value.nombre}}</td>
                     <td>{{value.descripcion}}</td>
                     <td>{{value.precio}}</td>
-                    <td>
-                        <a href="#" class="nav-link" @click="verProducto(value.id)"> <i
-                                class="fa-sharp fa-solid fa-pen"></i> Editar</a>
-                    </td>
-                    <td>
-                        <a href="#" class="nav-link" @click="eliminarProducto(value.id)"> <i
-                                class="fa-sharp fa-solid fa-trash"></i>Eliminar </a>
-                    </td>
+                  
                 </tr>
 
             </tbody>
         </table>
+
+        <br /><br />
+        
+            <h1>Filtro 2 - Productos mayores a 100
+            </h1>
+        
+
+        <br />
+
+        <div class="accordion" id="accordionExample">
+
+            <div class="accordion-item" v-for="(value, index) in filtrarPorPrecio">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        :data-bs-target="`#collapseTwo${index}`" aria-expanded="false"
+                        :aria-controls="`collapseTwo${index}`">
+                        {{value.nombre}} - Precio: {{value.precio}}
+                    </button>
+                </h2>
+                <div :id="`collapseTwo${index}`" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{value.descripcion}}
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br/><br/><br/>
     </div>
 </template>
 
@@ -55,6 +74,7 @@ export default {
             catalogo: [],
             productos: [],
             productosTodo: [],
+            precioFiltro: null,
             itemCatalogo: {
                 id: null,
                 nombre: null
@@ -74,7 +94,7 @@ export default {
                 })
                 .catch(e => console.log(e));
         },
-        
+
         getProductos(itemCatalogo) {
             axios({
                 method: "get",
@@ -98,21 +118,23 @@ export default {
                     console.log(response);
                 })
                 .catch(e => console.log(e));
-        },        
+        },
     },
-    
+
     computed: {
-        filtrarPorPrecio(){
-            if(this.$store.state.soloTerminado){
-                return this.tareas.filter(item =>{
-                    return item.terminado;
-                });
-            }
-            return this.tareas;
-        }
+        filtrarPorPrecio() {
+
+            return this.productosTodo.filter(item => {
+                return item.precio > 100
+            });
+
+
+        },
     },
+
     mounted() {
         this.getCatalogo();
+        this.getAllProductos();
     },
     components: {
     }

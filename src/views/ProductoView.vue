@@ -30,7 +30,7 @@
                     aria-describedby="button-addon2">
             </div>
             <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" type="submit">Agregar</button>
+                <button class="btn btn-outline-secondary" type="submit">GUARDAR</button>
             </div>
             <!-- <div class="input-group mb-2">
                 <button class="btn btn-outline-secondary" type="submit">Modificar</button>

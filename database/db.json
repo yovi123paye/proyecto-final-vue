@@ -28,7 +28,7 @@
       "nombre": "Fierro de Tres pulgadas",
       "descripcion": "Fierro 3/8",
       "precio": "1000",
-      "catalogoId": null
+      "catalogoId": 1
     },
     {
       "nombre": "Cemento YUCRA",
@@ -41,7 +41,7 @@
       "id": 4,
       "nombre": "Fierro de 4/9",
       "descripcion": "1111",
-      "precio": "11111",
+      "precio": "99",
       "catalogoId": 2
     },
     {
