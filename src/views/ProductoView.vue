@@ -1,9 +1,7 @@
 <template>
     <div class="container">
         <h1>Productos</h1>
-        <!-- <div class="input-group mb-1">
-            <button class="btn btn-outline-primary" @click="nuevoProducto()">Nuevo</button>
-        </div> -->
+        
         <br />
         <form @submit.prevent="agregarProducto()">
 
@@ -32,9 +30,7 @@
             <div class="input-group mb-2">
                 <button class="btn btn-outline-secondary" type="submit">GUARDAR</button>
             </div>
-            <!-- <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" type="submit">Modificar</button>
-            </div> -->
+      
 
         </form>
 
@@ -73,32 +69,6 @@
             </tbody>
         </table>
 
-        <!-- <div class="accordion" id="accordionExample">
-
-            <div class="accordion-item" v-for="(value, index) in lista">
-                <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        :data-bs-target="`#collapseTwo${index}`" aria-expanded="false"
-                        :aria-controls="`collapseTwo${index}`">
-                        <input type="checkbox" :checked="value.terminado"
-                            @click="setearCheckbox(value.terminado, value.id)">
-                        {{value.titulo}}
-                    </button>
-                </h2>
-                <div :id="`collapseTwo${index}`" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        {{value.contenido}}
-
-                        <app-acciones @onAccion="irA($event, value.id)"></app-acciones>
-
-                    </div>
-                </div>
-            </div>
-
-        </div> -->
-
-
     </div>
 </template>
 
@@ -108,15 +78,7 @@ export default {
     name: 'productoView',
     data() {
         return {
-            /*soloTeminado: false,
-            textoABuscar: '',
-            "id": 1,
-            "imagen": "https://ae01.alicdn.com/kf/Sc3cc58f2a441419f970cc01f9e5358fbw/Dron-LU3-MAX-GPS-8K-HD-profesional-con-c-mara-Dual-card-n-autoestabilizador-Motor-sin.jpg_Q90.jpg_.webp",
-            "nombre": "Cemento Viacha IPV 40",
-            "descripcion": "ABC ....",
-            "precio": "50",
-            "catalogoId": 1
-            */
+           
             producto: {
                 id: null,
                 nombre: null,
@@ -166,7 +128,7 @@ export default {
         getProductos() {
             axios({
                 method: "get",
-                // url: process.env.VUE_APP_RUTA_API+"/tareas/?q="+this.textoABuscar
+                
                 url: "http://localhost:3000/productos",
             })
                 .then(response => {
@@ -178,7 +140,7 @@ export default {
         eliminarProducto(id) {
             axios({
                 method: "delete",
-                // url: process.env.VUE_APP_RUTA_API+"/tareas",
+               
                 url: "http://localhost:3000/productos/" + id
             })
                 .then(response => {
@@ -191,7 +153,7 @@ export default {
         verProducto(id) {
             axios({
                 method: "get",
-                // url: process.env.VUE_APP_RUTA_API+"/tareas",
+                
                 url: "http://localhost:3000/productos/" + id
             })
                 .then(response => {
@@ -215,7 +177,7 @@ export default {
         getCatalogo() {
             axios({
                 method: "get",
-                // url: process.env.VUE_APP_RUTA_API+"/tareas/?q="+this.textoABuscar
+                
                 url: "http://localhost:3000/catalogo",
             })
                 .then(response => {

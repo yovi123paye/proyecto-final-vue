@@ -97,7 +97,7 @@ export default {
         getProductos(itemCatalogo) {
             axios({
                 method: "get",
-                // url: process.env.VUE_APP_RUTA_API+"/tareas/?q="+this.textoABuscar
+                
                 url: "http://localhost:3000/catalogo/" + itemCatalogo + "/productos",
             })
                 .then(response => {
@@ -109,7 +109,7 @@ export default {
         getAllProductos() {
             axios({
                 method: "get",
-                // url: process.env.VUE_APP_RUTA_API+"/tareas/?q="+this.textoABuscar
+               
                 url: "http://localhost:3000/productos",
             })
                 .then(response => {

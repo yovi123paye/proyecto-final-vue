@@ -79,7 +79,7 @@ export default {
         verCatalogo(id) {
             axios({
                 method: "get",
-                // url: process.env.VUE_APP_RUTA_API+"/tareas",
+              
                 url: "http://localhost:3000/catalogo/" + id
             })
                 .then(response => {
@@ -92,7 +92,7 @@ export default {
         getCatalogo() {
             axios({
                 method: "get",
-                // url: process.env.VUE_APP_RUTA_API+"/tareas/?q="+this.textoABuscar
+              
                 url: "http://localhost:3000/catalogo",
             })
                 .then(response => {
@@ -104,7 +104,7 @@ export default {
         eliminarCatalogo(id) {
             axios({
                 method: "delete",
-                // url: process.env.VUE_APP_RUTA_API+"/tareas",
+               
                 url: "http://localhost:3000/catalogo/" + id
             })
                 .then(response => {
@@ -118,7 +118,7 @@ export default {
             if (this.itemCatalogo.id == null) {
                 axios({
                     method: "post",
-                    // url: process.env.VUE_APP_RUTA_API+"/tareas",
+                  
                     url: "http://localhost:3000/catalogo",
                     data: this.itemCatalogo
                 })
