@@ -1,6 +1,6 @@
 <template>
 
-    
+
     <div class="container">
         <img alt="Vue logo" style="max-width: 200px;" class="img-fluid" src="../assets/material.jpg">
         <div>
@@ -17,7 +17,7 @@
                         placeholder="Nombre de Catalogo" aria-describedby="button-addon2">
                 </div>
                 <div class="input-group mb-2">
-                    <button class="btn btn-outline-secondary" type="submit">Guardar</button>
+                    <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-save"></i>Guardar</button>
                 </div>
             </form>
         </div>
@@ -26,7 +26,15 @@
         <br />
         <br />
 
-
+        <div>
+            <i class="el el-align-left">
+                <p>
+                    <label>Buscar por nombre :</label>
+                    <input type="text"  v-model = "nombreCatalogo">
+                    <button @click.prevent="getSeacrh()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </p>
+            </i>
+        </div>
         <h1> Listado de Catalogo</h1>
         <table class="table">
             <thead class="thead-light">
@@ -79,7 +87,7 @@ export default {
         verCatalogo(id) {
             axios({
                 method: "get",
-              
+
                 url: "http://localhost:3000/catalogo/" + id
             })
                 .then(response => {
@@ -89,10 +97,21 @@ export default {
                 })
                 .catch(e => console.log(e));
         },
+        getSeacrh() {
+            axios({
+                method: "get",
+                url: "http://localhost:3000/catalogo/?q="+this.nombreCatalogo
+            })
+                .then(response => {
+                    this.catalogo = response.data;
+                    console.log(response);
+                })
+                .catch(e => console.log(e));
+        },
         getCatalogo() {
             axios({
                 method: "get",
-              
+
                 url: "http://localhost:3000/catalogo",
             })
                 .then(response => {
@@ -104,7 +123,7 @@ export default {
         eliminarCatalogo(id) {
             axios({
                 method: "delete",
-               
+
                 url: "http://localhost:3000/catalogo/" + id
             })
                 .then(response => {
@@ -118,7 +137,7 @@ export default {
             if (this.itemCatalogo.id == null) {
                 axios({
                     method: "post",
-                  
+
                     url: "http://localhost:3000/catalogo",
                     data: this.itemCatalogo
                 })

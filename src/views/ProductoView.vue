@@ -28,7 +28,7 @@
                     aria-describedby="button-addon2">
             </div>
             <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" type="submit">GUARDAR</button>
+                <button class="btn btn-outline-secondary" type="submit"> <i class="fas fa-save"></i>Guardar</button>
             </div>
       
 
