@@ -30,8 +30,8 @@
             <i class="el el-align-left">
                 <p>
                     <label>Buscar por nombre :</label>
-                    <input type="text">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text"  v-model = "nombreCatalogo">
+                    <button @click.prevent="getSeacrh()"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </p>
             </i>
         </div>
@@ -94,6 +94,17 @@ export default {
                     console.log(response);
                     //this.tarea.titulo = null;
                     this.itemCatalogo = response.data;
+                })
+                .catch(e => console.log(e));
+        },
+        getSeacrh() {
+            axios({
+                method: "get",
+                url: "http://localhost:3000/catalogo/?q="+this.nombreCatalogo
+            })
+                .then(response => {
+                    this.catalogo = response.data;
+                    console.log(response);
                 })
                 .catch(e => console.log(e));
         },
