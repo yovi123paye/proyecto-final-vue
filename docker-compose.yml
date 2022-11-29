@@ -3,11 +3,11 @@ volumes:
   web_data:
     external: true
 services:
-  web-front:
+  web-frontend:
     build: .        
     ports:
       - "80:80"
-  web-back:
+  web-backend:
     image: proyecto-final-django_web:latest
     command: python manage.py runserver 0.0.0.0:8000
     ports:
