@@ -7,11 +7,11 @@ services:
     build: .        
     ports:
       - "80:80"
-  web-backend:
-    image: proyecto-final-django_web:latest
-    command: python manage.py runserver 0.0.0.0:8000
-    ports:
-      - "8000:8000"
+#  web-backend:
+#    image: proyecto-final-django_web:latest
+#    command: python manage.py runserver 0.0.0.0:8000
+ #   ports:
+ #     - "8000:8000"
   bd: 
     image: clue/json-server:latest
     volumes:
